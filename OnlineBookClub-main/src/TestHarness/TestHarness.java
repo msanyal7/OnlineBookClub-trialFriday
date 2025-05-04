@@ -19,7 +19,7 @@ import java.util.Date;
 
 public class TestHarness {
     public TestHarness(){
-        IntegrationTestCases integrationTestCases = new IntegrationTestCases();
+      IntegrationTestCases integrationTestCases = new IntegrationTestCases();
         integrationTestCases.testAddChanneltoSubscribedList();
         integrationTestCases.testSendMessageInChannel();
 
@@ -32,6 +32,11 @@ public class TestHarness {
         //System Test cases
         SystemTestCases systemTestCases = new SystemTestCases();
         systemTestCases.testMeetingClick();
+
+        //NonFunctional Test Cases
+        NonFunctionalTestCases nonFunctionalTestCases = new NonFunctionalTestCases();
+        nonFunctionalTestCases.testValidationMessage();
+        nonFunctionalTestCases.testAddBookToList();
 
 
     }

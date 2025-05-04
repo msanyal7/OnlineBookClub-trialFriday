@@ -1,28 +1,38 @@
 package Homepage.Controller;
 
+import Homepage.Model.Homepage;
+import Homepage.View.HomepageView;
+import UserAuthentication.Controller.UserProfileController;
 import UserAuthentication.Model.User;
+import UserAuthentication.View.UserProfileView;
+import javax.swing.*;
+
 
 public class HomepageController {
-    //Attributes
-    User userProfile;
 
-    //CONSTRUCTOR
-    public HomepageController(User userProfile) {
-        this.userProfile = userProfile;
+    private Homepage model;
+    private HomepageView view;
+    User user = new User("admin", "werna@com", "1234");
+
+    public HomepageController(Homepage model, HomepageView view) {
+        this.model = model;
+        this.view = view;
+        homepageTabs();
     }
-
-
-    //METHODS
-    public User getUserProfile() {
-        return userProfile;
-    }
-    public void setUserProfile(User userProfile) {
-        this.userProfile = userProfile;
-    }
-
-
-        public void displayHomepage() {
-            System.out.println("Displaying the Homepage...");
+    private void homepageTabs() {
+        for (String tabTitle : model.getTabTitles()) {
+            switch (tabTitle) {
+                case "Profile":
+                    UserProfileView userProfileView = new UserProfileView();
+                    UserProfileController profileController = new UserProfileController(user, userProfileView);
+                    view.addTab(tabTitle, userProfileView);
+                    break;
+            }
         }
+        view.showView(); // Ensure the frame is made visible
     }
 
+
+
+
+}

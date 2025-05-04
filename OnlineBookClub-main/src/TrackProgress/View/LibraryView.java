@@ -3,7 +3,7 @@ package TrackProgress.View;
 import javax.swing.*;
 import java.awt.*;
 
-public class LibraryView {
+public class LibraryView extends JPanel {
     private JPanel libraryPnlRoot;
     private JTextField numofBookTextField;
     private JTextArea bookInfoListTextArea;

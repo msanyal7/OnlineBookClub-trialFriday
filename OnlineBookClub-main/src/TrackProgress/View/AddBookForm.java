@@ -2,7 +2,7 @@ package TrackProgress.View;
 
 import javax.swing.*;
 
-public class AddBookForm {
+public class AddBookForm extends JPanel{
     private JPanel addBookpnl;
     private JTextField nameTextField;
     private JTextField authorTextField;
