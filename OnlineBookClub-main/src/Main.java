@@ -47,16 +47,16 @@ public class Main {
 //        });
 
 
-      ReadingProgress readingProgressModel = new ReadingProgress();
-     LibraryView libraryView = new LibraryView();
-     AddBookForm addBookForm = new AddBookForm();
-     LibraryController libraryController = new LibraryController(readingProgressModel, libraryView, addBookForm);
+ //     ReadingProgress readingProgressModel = new ReadingProgress();
+  //   LibraryView libraryView = new LibraryView();
+  //   AddBookForm addBookForm = new AddBookForm();
+  //   LibraryController libraryController = new LibraryController(readingProgressModel, libraryView, addBookForm);
 
 
 
 
 
-
+/*
 
 
        MeetingsList meetingsList = MeetingsList.getInstance();
@@ -68,6 +68,7 @@ public class Main {
        frame.pack();
         frame.setVisible(true);
 
+ */
 
     }
 }

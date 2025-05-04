@@ -2,7 +2,7 @@ package MeetingBookClub.View;
 
 import javax.swing.*;
 
-public class MeetingListView {
+public class MeetingListView extends JPanel{
 
 
     private JLabel MeetingListTitle;

@@ -1,8 +1,13 @@
 package Homepage.Controller;
 
+import Channels.Controller.ChannelListController;
+import Channels.View.ChannelListView;
 import Homepage.Model.Homepage;
 import Homepage.Model.Library;
 import Homepage.View.HomepageView;
+import MeetingBookClub.Controller.MeetingListViewController;
+import MeetingBookClub.Model.MeetingsList;
+import MeetingBookClub.View.MeetingListView;
 import TrackProgress.Controller.LibraryController;
 <<<<<<< Updated upstream
 import TrackProgress.Model.ReadingProgress;
@@ -30,17 +35,28 @@ public class HomepageController {
     private void homepageTabs() {
         for (String tabTitle : model.getTabTitles()) {
             switch (tabTitle) {
+                case "Reading Progress":
+                    ReadingProgress readingProgress = new ReadingProgress();
+                    LibraryView libraryView = new LibraryView();
+                    AddBookForm addBookFormView = null;
+                    LibraryController libraryController = new LibraryController(readingProgress, libraryView, addBookFormView);
+                    view.addTab(tabTitle, libraryView);
+                    break;
                 case "Profile":
                     UserProfileView userProfileView = new UserProfileView();
                     UserProfileController profileController = new UserProfileController(user, userProfileView);
                     view.addTab(tabTitle, userProfileView);
                     break;
-                case "Reading Progress":
-                    ReadingProgress readingProgress = new ReadingProgress();
-                    LibraryView libraryView = new LibraryView();
-                    AddBookForm addBookFormView = new AddBookForm();
-                    LibraryController libraryController = new LibraryController(readingProgress, libraryView, addBookFormView);
-                    view.addTab(tabTitle, libraryView);
+                case "Meetings":
+                    MeetingsList meetingsList = new MeetingsList();
+                    MeetingListView meetingListView = new MeetingListView();
+                    MeetingListViewController meetingListViewController = new MeetingListViewController(meetingsList, meetingListView);
+                    view.addTab(tabTitle, meetingListView);
+                    break;
+                case "Channels":
+                    ChannelListView channelListView = new ChannelListView(user);
+                    ChannelListController channelListController = new ChannelListController(user);
+                    view.addTab(tabTitle, channelListView);
                     break;
             }
         }
