@@ -7,7 +7,7 @@ import TrackProgress.Model.ReadingProgress;
 import javax.swing.*;
 import java.awt.*;
 
-public class BookProgressForm {
+public class BookProgressForm extends JPanel{
     private JPanel bookProgressPanel;
     private JLabel bookTitleLabel;
     private JLabel pagesProgressLabel;
