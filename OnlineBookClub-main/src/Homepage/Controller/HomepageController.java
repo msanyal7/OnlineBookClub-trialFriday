@@ -2,6 +2,10 @@ package Homepage.Controller;
 
 import Homepage.Model.Homepage;
 import Homepage.View.HomepageView;
+import TrackProgress.Controller.LibraryController;
+import TrackProgress.Model.ReadingProgress;
+import TrackProgress.View.AddBookForm;
+import TrackProgress.View.LibraryView;
 import UserAuthentication.Controller.UserProfileController;
 import UserAuthentication.Model.User;
 import UserAuthentication.View.UserProfileView;
@@ -26,6 +30,13 @@ public class HomepageController {
                     UserProfileView userProfileView = new UserProfileView();
                     UserProfileController profileController = new UserProfileController(user, userProfileView);
                     view.addTab(tabTitle, userProfileView);
+                    break;
+                case "Reading Progress":
+                    ReadingProgress readingProgress = new ReadingProgress();
+                    LibraryView libraryView = new LibraryView();
+                    AddBookForm addBookFormView = new AddBookForm();
+                    LibraryController libraryController = new LibraryController(readingProgress, libraryView, addBookFormView);
+                    view.addTab(tabTitle, libraryView);
                     break;
             }
         }
