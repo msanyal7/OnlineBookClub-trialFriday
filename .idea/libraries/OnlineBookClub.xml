@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="OnlineBookClub">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/OnlineBookClub-main/OnlineBookClub.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
