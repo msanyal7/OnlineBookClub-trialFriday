@@ -1,10 +1,14 @@
 package TestHarness;
+import Homepage.Controller.HomepageController;
 import Homepage.Model.Book;
+import Homepage.Model.Homepage;
+import Homepage.View.HomepageView;
 import TrackProgress.Model.ReadingProgress;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class NonFunctionalTestCases {
     public NonFunctionalTestCases() {
 
@@ -39,6 +43,16 @@ public class NonFunctionalTestCases {
             ReadingProgress progress = new ReadingProgress();
             progress.addBookToRead(invalidBook);
             System.out.println("FAIL: Book with empty title was added.");
+        }
+    }
+
+    public void testHomepageTabsPerformance() {
+        long startTime = System.currentTimeMillis();
+        HomepageController controller = new HomepageController(new Homepage(), new HomepageView());
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        if (duration < 5000){
+            System.out.println("Homepage tabs rendered too slowly");
         }
     }
 }

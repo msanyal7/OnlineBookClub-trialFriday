@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.sql.Time;
 import java.util.Date;
 
-public class MeetingListViewController implements ActionListener {
+public class  MeetingListViewController implements ActionListener {
 
 
     /**

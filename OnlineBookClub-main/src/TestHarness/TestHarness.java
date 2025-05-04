@@ -37,6 +37,7 @@ public class TestHarness {
         NonFunctionalTestCases nonFunctionalTestCases = new NonFunctionalTestCases();
         nonFunctionalTestCases.testValidationMessage();
         nonFunctionalTestCases.testAddBookToList();
+        nonFunctionalTestCases.testHomepageTabsPerformance();
 
 
     }
