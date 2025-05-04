@@ -2,6 +2,7 @@ package MeetingBookClub.Controller;
 
 
 import MeetingBookClub.Model.Meeting;
+import MeetingBookClub.Model.MeetingInterface;
 import MeetingBookClub.Model.MeetingsList;
 import MeetingBookClub.View.MeetingListView;
 
@@ -56,10 +57,10 @@ public class MeetingListViewController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-
         if (source == view.getAddToList()){
             addNewMeeting();
         }
+        updateListVisual();
     }
 
     private void addNewMeeting() {
@@ -78,10 +79,9 @@ public class MeetingListViewController implements ActionListener {
 
         Meeting newMeeting = new Meeting(today, now, name, link);
         model.addMeetingtoList(newMeeting);
-
-
         DefaultListModel<Meeting> listModel = (DefaultListModel<Meeting>) view.getListofMeetings().getModel();
         listModel.addElement(newMeeting);
+
 
     }
 
@@ -101,6 +101,14 @@ public class MeetingListViewController implements ActionListener {
 
     private void deleteMeeting(){
 
+    }
+
+    private void updateListVisual(){
+        DefaultListModel<Meeting> listModel = new DefaultListModel<>();
+        for (MeetingInterface m : model.getMeetingList()) {
+            listModel.addElement((Meeting) m);
+        }
+        view.getListofMeetings().setModel(listModel);
     }
 
 

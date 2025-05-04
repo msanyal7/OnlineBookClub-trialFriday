@@ -47,26 +47,26 @@ public class Main {
 //        });
 
 
-//        ReadingProgress readingProgressModel = new ReadingProgress();
-//        LibraryView libraryView = new LibraryView();
-//        AddBookForm addBookForm = new AddBookForm();
-//        LibraryController libraryController = new LibraryController(readingProgressModel, libraryView, addBookForm);
-//
+      ReadingProgress readingProgressModel = new ReadingProgress();
+     LibraryView libraryView = new LibraryView();
+     AddBookForm addBookForm = new AddBookForm();
+     LibraryController libraryController = new LibraryController(readingProgressModel, libraryView, addBookForm);
 
 
 
 
 
-        //Meeting
 
-//        MeetingsList meetingsList = new MeetingsList();
-//        MeetingListView meetingListView = new MeetingListView();
-//        MeetingListViewController controllerMeeting = new MeetingListViewController(meetingsList, meetingListView);
-//        JFrame frame = new JFrame("Meeting Manager");
-//        frame.setContentPane(meetingListView.getJPanell());
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.pack();
-//        frame.setVisible(true);
+
+
+       MeetingsList meetingsList = MeetingsList.getInstance();
+       MeetingListView meetingListView = new MeetingListView();
+       MeetingListViewController controllerMeeting = new MeetingListViewController(meetingsList, meetingListView);
+      JFrame frame = new JFrame("Meeting Manager");
+      frame.setContentPane(meetingListView.getJPanell());
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       frame.pack();
+        frame.setVisible(true);
 
 
     }

@@ -9,6 +9,7 @@ public class MeetingsList  {
      * List of meetings
      */
     private List<MeetingInterface> meetingList;
+    private static MeetingsList same;
 
 
     /**
@@ -16,7 +17,14 @@ public class MeetingsList  {
      */
 
     public MeetingsList() {
-        this.meetingList = new ArrayList<>();
+        meetingList = new ArrayList<>();
+    }
+
+    public static MeetingsList getInstance(){
+        if (same==null){
+            same = new MeetingsList();
+        }
+        return same;
     }
 
 

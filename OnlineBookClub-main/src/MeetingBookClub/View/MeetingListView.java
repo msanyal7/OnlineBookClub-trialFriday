@@ -43,6 +43,7 @@ public class MeetingListView {
     }
 
     private JPanel JPanell;
+    private JButton delete_meeting_button;
 
     public MeetingListView(){
         createComponents();
@@ -53,9 +54,9 @@ public class MeetingListView {
         ListofMeetings = new JList<>(new DefaultListModel<>());
         AddToList = new JButton("Add Meeting");
         JPanell = new JPanel();
-        JPanell.setLayout(new BoxLayout(JPanell, BoxLayout.Y_AXIS));
         JPanell.add(MeetingListTitle);
-        JPanell.add(new JScrollPane(ListofMeetings)); // IMPORTANT: wrap list in JScrollPane
+        JPanell.add(new JScrollPane(ListofMeetings));
         JPanell.add(AddToList);
+        this.JPanell.setSize(100,200);
     }
 }
