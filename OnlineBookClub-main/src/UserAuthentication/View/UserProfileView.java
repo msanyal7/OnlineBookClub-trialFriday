@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class UserProfileView extends JFrame{
+public class UserProfileView extends JPanel{
     private JPanel pnlRoot;
     private JPanel userInfoPanel;
     private JLabel passwordLabel;
@@ -33,10 +33,11 @@ public class UserProfileView extends JFrame{
     }
 
 
-    final int FRAME_WIDTH = 500;
-    final int FRAME_HEIGHT = 400;
+    //final int FRAME_WIDTH = 500;
+    //final int FRAME_HEIGHT = 400;
 
-    public UserProfileView(UserProfileController controller) {
+    UserProfileController controller;
+    public UserProfileView() {
         createComponents();
         addChangeButtonListener(controller);
         addChannelButtonListener(controller);
@@ -51,10 +52,10 @@ public class UserProfileView extends JFrame{
         userInfoPanel.setBackground(new Color(161, 218, 216));
         pnlRoot.setBackground(new Color(161, 218, 216));
         this.add(pnlRoot);
-        this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        //this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("USER PROFILE");
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setTitle("USER PROFILE");
 
     }
 

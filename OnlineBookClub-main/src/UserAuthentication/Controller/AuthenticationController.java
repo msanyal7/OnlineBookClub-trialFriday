@@ -1,6 +1,9 @@
 package UserAuthentication.Controller;
 
+import Homepage.Controller.HomepageController;
 import Homepage.Model.Book;
+import Homepage.Model.Homepage;
+import Homepage.View.HomepageView;
 import UserAuthentication.Model.User;
 import UserAuthentication.Model.UserAuthentication;
 import UserAuthentication.View.AuthenticationView;
@@ -28,9 +31,7 @@ public class AuthenticationController {
         this.registerView.addRegisterButtonListener(new RegisterButtonListener());
     }
 
-    public void markBookAsRead(Book book1) {
-    }
-
+    // This class triggers the homepage to pop up when the user logins
     class LoginButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -38,14 +39,15 @@ public class AuthenticationController {
             String password = view.getPassword();
             User user = auth.login(username, password);
             if (user != null) {
-                System.out.println("Login succesfull!");
-                ShowUserProfile(user);
+                HomepageView homepageView = new HomepageView();
+                Homepage homepageModel = new Homepage();
+                // issue
+                HomepageController homepageController = new HomepageController(homepageModel, homepageView);
+                view.dispose();
                 view.showMessage("Login successful!");
             } else {
                 view.showError("Invalid username or password.");
             }
-
-
         }
     }
 
@@ -75,10 +77,7 @@ public class AuthenticationController {
             }
         }
     }
-    public void ShowUserProfile(User user){
-        view.dispose();
-        userProfileController = new UserProfileController(user);
-    }
+
     public void showLoginScreen(){
         registerView.setVisible(false);
         view.setVisible(true);

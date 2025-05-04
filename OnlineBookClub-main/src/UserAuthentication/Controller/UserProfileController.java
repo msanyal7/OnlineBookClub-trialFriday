@@ -12,9 +12,9 @@ public class UserProfileController implements ActionListener {
     private User user;
     private UserProfileView view;
 
-    public UserProfileController(User user) {
+    public UserProfileController(User user, UserProfileView view) {
         this.user = user;
-        this.view = new UserProfileView(this);
+        this.view = view;
         view.displayData(user);
     }
 
