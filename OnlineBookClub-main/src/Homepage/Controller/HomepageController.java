@@ -1,10 +1,14 @@
 package Homepage.Controller;
 
 import Homepage.Model.Homepage;
+import Homepage.Model.Library;
 import Homepage.View.HomepageView;
 import TrackProgress.Controller.LibraryController;
+<<<<<<< Updated upstream
 import TrackProgress.Model.ReadingProgress;
 import TrackProgress.View.AddBookForm;
+=======
+>>>>>>> Stashed changes
 import TrackProgress.View.LibraryView;
 import UserAuthentication.Controller.UserProfileController;
 import UserAuthentication.Model.User;
