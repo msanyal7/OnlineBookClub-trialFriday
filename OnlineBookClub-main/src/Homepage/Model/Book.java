@@ -75,10 +75,11 @@ public class Book {
         this.numPages = numPages;
     }
 
-    public void displayBookInfo() {
-        System.out.println("Title: " + title + ", Author: " + author + ", Read: " + isRead + ", Progress: " + bookProgress + "%");
-    }
 
+    @Override
+    public String toString() {
+        return "Title: " + title + ", Author: " + author + ", Pages: " + numPages;
+    }
 
 
 }
