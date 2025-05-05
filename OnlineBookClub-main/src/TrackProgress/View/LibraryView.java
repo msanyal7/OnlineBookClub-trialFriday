@@ -20,13 +20,6 @@ public class LibraryView extends JPanel {
     private JLabel bookProgressLabel;
     private DefaultListModel<String> readingListModel;
 
-    //CHANGES
-    private JTabbedPane tabbedPane;
-
-    public JTabbedPane getTabbedPane() {
-        return tabbedPane;
-    }
-    //CHANGES END
 
     public JPanel getPanel() {
         return libraryPnlRoot;

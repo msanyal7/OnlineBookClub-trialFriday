@@ -38,7 +38,7 @@ public class HomepageController {
                 case "Reading Progress":
                     ReadingProgress readingProgress = new ReadingProgress();
                     LibraryView libraryView = new LibraryView();
-                    AddBookForm addBookFormView = null;
+                    AddBookForm addBookFormView = new AddBookForm();
                     LibraryController libraryController = new LibraryController(readingProgress, libraryView, addBookFormView);
                     view.addTab(tabTitle, libraryView.getPanel());
                     break;

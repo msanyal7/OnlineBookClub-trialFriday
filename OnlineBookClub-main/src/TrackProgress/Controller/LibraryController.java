@@ -36,14 +36,6 @@ public class LibraryController {
             }
         });
 
-        // Initialize main frame
-        JFrame frame = new JFrame("Reading Tracker");
-        frame.setContentPane(libraryView.getPanel());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-
-        // Initial data display
         updateWantToReadDisplay();
         updateBookCount();
         updateBooksReadDisplay();
@@ -172,20 +164,6 @@ public class LibraryController {
         }
     }
 
-    public void markBookAsRead(Book book) {
-        readingProgress.markBookAsRead(book);
-        updateBooksReadDisplay();
-        updateWantToReadDisplay();
-        updateBookCount();
-    }
-
-    public void displayBooksRead() {
-        System.out.println("Books already read:");
-        for (Book book : readingProgress.getBooksRead()) {
-            System.out.println("- " + book.getTitle() + " by " + book.getAuthor());
-        }
-    }
-
     public void refreshLibraryView() {
         updateBookCount();
         updateWantToReadDisplay();
@@ -193,7 +171,7 @@ public class LibraryController {
     }
 
     private String extractBookTitle(String listItemText) {
-        // "Book Name by Author Name" --> Extract "Book Name"
+        // "Book Name by Author Name" --> Use on the "Book Name"
         if (listItemText.contains(" by ")) {
             return listItemText.substring(0, listItemText.indexOf(" by ")).trim();
         }
