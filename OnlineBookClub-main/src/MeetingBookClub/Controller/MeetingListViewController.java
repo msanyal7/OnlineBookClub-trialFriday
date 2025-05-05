@@ -86,13 +86,14 @@ public class  MeetingListViewController implements ActionListener {
         }
 
         // getting date
+        Date meetingDate = null;
        String dateStringInput = JOptionPane.showInputDialog(view.getJPanell(), "Enter Meeting Date:");
-        // date try catchh
         try {
             SimpleDateFormat parser = new SimpleDateFormat("MM/dd/yyyy");
-            String meetingDate = String.valueOf(parser.parse(dateStringInput));
+            meetingDate = parser.parse(dateStringInput);
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(view.getJPanell(), "Invalid date format. Please enter date again");
+            return;
         }
         // time try catch
         Date datetime = null;

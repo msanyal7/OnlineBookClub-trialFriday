@@ -20,8 +20,8 @@ public class MeetingsList  {
 
     public MeetingsList() {
         this.meetingList = new ArrayList<>();
-        meetingList.add(new Meeting(new Date(12/4/2003), new Time(12,30,0),"Hunger Games","www.zoom.com"));
-        meetingList.add(new Meeting(new Date(12/4/2025), new Time(12,30,0),"Catcher in the Rye","www.zoom.com"));
+        meetingList.add(new Meeting(new Date(12/04/2025), new Time(12,30,00),"Hunger Games","www.zoom.com"));
+        meetingList.add(new Meeting(new Date(12/04/2025), new Time(12,30,00),"Catcher in the Rye","www.zoom.com"));
     }
 
     public static MeetingsList getInstance(){
