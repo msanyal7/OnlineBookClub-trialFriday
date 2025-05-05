@@ -3,7 +3,7 @@ package UserAuthentication.Controller;
 import javax.swing.*;
 import java.awt.*;
 
-public class AddPaymentController {
+public class AddPaymentController extends JPanel{
     private JLabel mainPanel;
     private JLabel paymentLabel;
     private JLabel firstNameLabel;
