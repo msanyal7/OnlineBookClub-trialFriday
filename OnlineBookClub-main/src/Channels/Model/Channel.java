@@ -20,6 +20,9 @@ public class Channel {
         this.members.add(user);
         return true;
     }
+    public void removeMember(User user){
+        this.members.remove(user);
+    }
     /**
      * The name of the channel.
      */
@@ -87,6 +90,13 @@ public class Channel {
         return BookImage;
     }
 
+    private String description = "";
+    public String getDescription(){
+        return description;
+    }
+    public void setDescription(String description){
+        this.description = description;
+    }
     /**
      * Sets the book image associated with the channel.
      *
@@ -113,10 +123,11 @@ public class Channel {
      * Constructs a {@code Channel} object with the specified channel name and book identifier.
      *
      * @param channelName the name of the channel
-     * @param lop         an additional string parameter (unclear purpose, should be documented further)
+     * @param description         an additional string parameter (unclear purpose, should be documented further)
      */
-    public Channel(String channelName, String lop) {
+    public Channel(String channelName, String description) {
         this.channelName = channelName;
+        this.description = description;
     }
 
     public void addComment(Comment comment){

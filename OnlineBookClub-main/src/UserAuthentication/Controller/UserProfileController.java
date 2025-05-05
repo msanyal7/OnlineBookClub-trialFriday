@@ -24,15 +24,15 @@ public class UserProfileController implements ActionListener {
         if (source.equals(view.getChangeBtn())) {
         openChangeSubscriptionWindow();
         }
-        if(source.equals(view.getChannels())){
-            openChannelList();
-        }
+//        if(source.equals(view.getChannels())){
+//            openChannelList();
+//        }
     }
 
-    private void openChannelList(){
-        ChannelListController channelListController = new ChannelListController(user);
-
-    }
+//    private void openChannelList(){
+//        ChannelListController channelListController = new ChannelListController(user);
+//
+//    }
     private void openChangeSubscriptionWindow() {
         SwingUtilities.invokeLater(() -> {
             ChangeSubscriptionController changeSub = new ChangeSubscriptionController();

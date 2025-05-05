@@ -5,6 +5,7 @@ import Channels.View.ChannelView;
 import UserAuthentication.Model.User;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +17,7 @@ public class ChannelController implements ActionListener {
         public Channel channel;
         public Comment comment;
         private User user;
+        public JPanel parentPanel;
 
         /**
          * Constructor
@@ -23,13 +25,20 @@ public class ChannelController implements ActionListener {
          */
 
         private ChannelView channelView;
-        public ChannelController(Channel channel, User user) {
+        public ChannelView getchannelView(){
+            return channelView;
+        }
+
+    public ChannelController(Channel channel, User user, JPanel parentPanel) {
             this.channel = channel;
             this.user = user;
+            this.parentPanel = parentPanel;
             this.channelView = new ChannelView(channel, user.getUsername());
             channelView.setContentPane(channelView.getPanel());
-            channelView.createComponents();
+            //channelView.createComponents();
+            showComments();
             channelView.getSendButton().addActionListener(this);
+            channelView.getBackButton().addActionListener(this);
         }
 
         //sendButton.addActionListener(new ActionListener() {
@@ -44,8 +53,21 @@ public class ChannelController implements ActionListener {
                     channelView.getInputArea().setText("");
                 }
             }
+            if(source.equals(channelView.getBackButton())){
+                goBackToListView();
+            }
         }
-
+        private void updateParentPanel(JPanel newPanel) {
+            parentPanel.removeAll();
+            parentPanel.setLayout(new BorderLayout());
+            parentPanel.add(newPanel, BorderLayout.CENTER);
+            parentPanel.revalidate();
+            parentPanel.repaint();
+        }
+        public void goBackToListView(){
+            ChannelListController channelListController = new ChannelListController(user, parentPanel);
+            updateParentPanel(channelListController.getChannelListView().getPanel());
+        }
         private void showComments(){
             for (Comment c : channel.getChannelComments()) {
                 channelView.addCommentToView(c);

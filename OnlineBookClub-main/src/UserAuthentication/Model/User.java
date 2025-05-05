@@ -55,6 +55,7 @@ public class User {
 
     public void subscribeToChannel(Channel channel) {
         if (!getSubscribedChannels().contains(channel)) {
+            channel.addMember(this);
             subscribedChannels.add(channel);
             System.out.println(getUsername() + " Subscribed to: " + channel.getChannelName());
         }
@@ -62,6 +63,7 @@ public class User {
 
     public void unsubscribeFromChannel(Channel channel) {
         if (getSubscribedChannels().remove(channel)) {
+            channel.removeMember(this);
             System.out.println(getUsername() + " Unsubscribed from: " + channel.getChannelName());
         }
     }
