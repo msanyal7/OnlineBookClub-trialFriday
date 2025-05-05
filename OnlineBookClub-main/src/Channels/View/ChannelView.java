@@ -4,6 +4,7 @@ import Channels.Model.Channel;
 import Channels.Model.ChannelObserver;
 import Channels.Model.Comment;
 import Homepage.Model.Book;
+import UserAuthentication.Model.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ChannelView extends JFrame implements ChannelObserver {
+
     private JPanel pnlRoot;
     private JPanel commentPnl;
     private JScrollPane scrollPane;
@@ -24,6 +26,12 @@ public class ChannelView extends JFrame implements ChannelObserver {
     public JButton getSendButton(){
         return this.sendButton;
     }
+    private JButton backButton;
+
+    public JButton getBackButton() {
+        return backButton;
+    }
+
     private JPanel inputPanel;
     private String currentUser;
     private Channel channel;
@@ -74,6 +82,8 @@ public class ChannelView extends JFrame implements ChannelObserver {
         channelNameLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
         headerPanel.add(channelNameLabel, BorderLayout.WEST);
 
+        backButton = new JButton("⬅ back");
+        headerPanel.add(backButton);
         // Channel details button
         channelDetailsButton = new JButton("Channel Details");
         channelDetailsButton.addActionListener(e -> showChannelDetails());
@@ -118,6 +128,11 @@ public class ChannelView extends JFrame implements ChannelObserver {
         contentPanel.add(nameLabel);
         contentPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
+        JLabel descriptionLabel = new JLabel(channel.getDescription());
+        descriptionLabel.setFont(new Font("SansSerif", Font.BOLD, 9));
+        contentPanel.add(descriptionLabel);
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+
         // Book info
         if (channel.getBook() != null) {
             JLabel bookTitleLabel = new JLabel("Book: " + channel.getBook().getTitle());
@@ -127,16 +142,17 @@ public class ChannelView extends JFrame implements ChannelObserver {
             contentPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }
 
-        // Members section (placeholder - you would need actual member data)
         JLabel membersLabel = new JLabel("Members:");
         membersLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
         contentPanel.add(membersLabel);
 
-        // Example members list
         DefaultListModel<String> membersListModel = new DefaultListModel<>();
-        membersListModel.addElement("User1");
-        membersListModel.addElement("User2");
-        membersListModel.addElement(currentUser);
+        for (User user : channel.getMembers()) {
+            membersListModel.addElement(user.getUsername());
+        }
+//        membersListModel.addElement("User1");
+//        membersListModel.addElement("User2");
+//        membersListModel.addElement(currentUser);
 
         JList<String> membersList = new JList<>(membersListModel);
         JScrollPane membersScrollPane = new JScrollPane(membersList);
@@ -194,7 +210,7 @@ public class ChannelView extends JFrame implements ChannelObserver {
         this.setTitle("Book Club Channel");
         this.setSize(500, 400);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
     // For testing standalone

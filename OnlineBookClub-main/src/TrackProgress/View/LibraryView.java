@@ -17,6 +17,7 @@ public class LibraryView extends JPanel {
     private JButton deleteBookButton;
 
     private JList<String> readingList;
+    private JLabel progressLabel;
     private JLabel bookProgressLabel;
     private DefaultListModel<String> readingListModel;
 
@@ -74,41 +75,17 @@ public class LibraryView extends JPanel {
     }
 
     private void createUIComponents() {
-        libraryPnlRoot = new JPanel();
-        libraryPnlRoot.setLayout(new BorderLayout());
-
-        // Top Section
-        JPanel topPanel = new JPanel(new FlowLayout());
         addABookButton = new JButton("Add a Book?");
         updateBookButton = new JButton("Update Book");
         deleteBookButton = new JButton("Delete Book");
+
         numofBookTextField = new JTextField(5);
+        bookInfoListTextArea = new JTextArea(10, 25);
+        wantToReadTextArea = new JTextArea(10, 25);
 
-        topPanel.add(addABookButton);
-        topPanel.add(updateBookButton);
-        topPanel.add(deleteBookButton);
-        topPanel.add(new JLabel("Books to Read:"));
-        topPanel.add(numofBookTextField);
-
-        // Center Section
         readingListModel = new DefaultListModel<>();
         readingList = new JList<>(readingListModel);
-        JScrollPane readingListScrollPane = new JScrollPane(readingList);
 
-        bookInfoListTextArea = new JTextArea(10, 25);
-        JScrollPane readScroll = new JScrollPane(bookInfoListTextArea);
-
-        JPanel centerPanel = new JPanel(new GridLayout(1, 2));
-        centerPanel.add(readingListScrollPane);
-        centerPanel.add(readScroll);
-
-        //Bottom Label
-        bookProgressLabel = new JLabel("Select a book to see progress!");
-        JPanel bottomPanel = new JPanel(new FlowLayout());
-        bottomPanel.add(bookProgressLabel);
-
-        libraryPnlRoot.add(topPanel, BorderLayout.NORTH);
-        libraryPnlRoot.add(centerPanel, BorderLayout.CENTER);
-        libraryPnlRoot.add(bottomPanel, BorderLayout.SOUTH);
+        bookProgressLabel = new JLabel("Progress: ");
     }
 }

@@ -19,6 +19,7 @@ import UserAuthentication.Controller.UserProfileController;
 import UserAuthentication.Model.User;
 import UserAuthentication.View.UserProfileView;
 import javax.swing.*;
+import java.awt.*;
 
 
 public class HomepageController {
@@ -54,9 +55,11 @@ public class HomepageController {
                     view.addTab(tabTitle, meetingListView.getJPanell());
                     break;
                 case "Channels":
-                    ChannelListView channelListView = new ChannelListView(user);
-                    ChannelListController channelListController = new ChannelListController(user);
-                    view.addTab(tabTitle, channelListView);
+                    //ChannelListView channelListView = new ChannelListView(user);
+                    JPanel channelsTab = new JPanel(new BorderLayout());
+                    ChannelListController channelListController = new ChannelListController(user, channelsTab);
+                    //channelsTab = channelListController.getChannelListView().getPanel();
+                    view.addTab(tabTitle, channelsTab);
                     break;
             }
         }

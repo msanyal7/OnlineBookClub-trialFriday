@@ -7,13 +7,13 @@ import TrackProgress.View.BookProgressForm;
 import TrackProgress.View.LibraryView;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionListener;
 
 public class LibraryController {
     private ReadingProgress readingProgress;
     private LibraryView libraryView;
     private AddBookForm addBookForm;
+    private Book currentBook;
     private JFrame addFrame;
 
     public LibraryController(ReadingProgress readingProgress, LibraryView libraryView, AddBookForm addBookForm) {
@@ -31,7 +31,16 @@ public class LibraryController {
             if (!e.getValueIsAdjusting()) {
                 String selectedValue = libraryView.getReadingList().getSelectedValue();
                 if (selectedValue != null) {
-                    openBookProgressForm(extractBookTitle(selectedValue));
+                    String selectedTitle = extractBookTitle(selectedValue);
+
+                    for (Book book : readingProgress.getBooksToRead()) {
+                        if (book.getTitle().equalsIgnoreCase(selectedTitle)) {
+                            currentBook = book;
+                            refreshBookProgressLabel();  // ✅ Updates the label
+                            openBookProgressForm(selectedTitle);
+                            break;
+                        }
+                    }
                 }
             }
         });
@@ -106,16 +115,13 @@ public class LibraryController {
     private void openBookProgressForm(String bookTitle) {
         for (Book book : readingProgress.getBooksToRead()) {
             if (book.getTitle().equalsIgnoreCase(bookTitle)) {
+                currentBook = book;
                 new BookProgressForm(book, readingProgress, this); // Pass the controller
                 return;
             }
         }
     }
 
-    public void refreshBookProgressLabel(Book book) {
-        double progress = book.getBookProgress();
-        libraryView.getBookProgressLabel().setText("Progress: " + String.format("%.2f", progress) + "%");
-    }
 
     private void updateBook() {
         String bookTitleInput = JOptionPane.showInputDialog("Enter the title of the book you want to update:");
@@ -171,7 +177,14 @@ public class LibraryController {
         updateBooksReadDisplay();
     }
 
-    private String extractBookTitle(String listItemText) {
+    public void refreshBookProgressLabel () {
+        if (currentBook != null) {
+            double progress = currentBook.getBookProgress();
+            libraryView.getBookProgressLabel().setText("Progress: " + String.format("%.2f", progress) + "%");
+        }
+    }
+
+        private String extractBookTitle(String listItemText) {
         // "Book Name by Author Name" --> Use on the "Book Name"
         if (listItemText.contains(" by ")) {
             return listItemText.substring(0, listItemText.indexOf(" by ")).trim();

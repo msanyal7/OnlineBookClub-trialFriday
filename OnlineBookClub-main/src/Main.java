@@ -16,7 +16,7 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        new TestHarness();
+        //new TestHarness();
 
         // Authenticating User m
         // to test login, you can use the 2 username & password combinations below:
@@ -28,10 +28,10 @@ public class Main {
                     // pass: pass
 
 
-     UserAuthentication model = new UserAuthentication();
-       AuthenticationController controller = new AuthenticationController(model);
+        UserAuthentication model = new UserAuthentication();
+        AuthenticationController controller = new AuthenticationController(model);
 //        Channel channel = new Channel("Polstergeese");
-        User user = new User("admin", "werna@com", "1234");
+        //User user = new User("admin", "werna@com", "1234");
 //        ChannelController channelController = new ChannelController(channel, user);
 
 //        User model2 = new User();

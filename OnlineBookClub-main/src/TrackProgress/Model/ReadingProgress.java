@@ -52,23 +52,4 @@ public class ReadingProgress {
         System.out.println("Added book to reading list: " + book);
     }
 
-    public void markBookAsRead(Book book) {
-        if (booksToRead.remove(book)) {
-            booksRead.add(book);
-            System.out.println("Marked book as read: " + book);
-        } else {
-            System.out.println("Book not found in reading list.");
-        }
-    }
-
-    public double getProgressPercentage() {
-        int totalBookPages = 0;
-        for (Book book : booksRead) {
-            totalBookPages += book.getNumPages();
-        }
-
-        if (totalBookPages == 0) return 0;
-
-        return (double) pagesRead / totalBookPages * 100;
-    }
 }

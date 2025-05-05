@@ -2,19 +2,36 @@ package Channels.View;
 
 import UserAuthentication.Model.User;
 import Channels.Model.Channel;
+import UserAuthentication.Model.UserAuthentication;
+
 import javax.swing.*;
+import javax.swing.event.AncestorListener;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ChannelListView extends JPanel {
     private JPanel pnlRoot;
+
+    public JPanel getPanel() {
+        return this;
+    }
+//    public void updatePanel(JPanel panel){
+//        this.getPanel() = panel;
+//    }
+
     private User user;
     private JList<Channel> channelList;
     private DefaultListModel<Channel> listModel;
     private JPopupMenu channelMenu;
     private Channel selectedChannel;
+    private JButton showAllChannels;
+
+    public JButton getShowAllChannels() {
+        return showAllChannels;
+    }
 
     public ChannelListView(User user) {
         this.user = user;
@@ -23,8 +40,14 @@ public class ChannelListView extends JPanel {
     }
 
     private void initializeUI() {
-        pnlRoot.setLayout(new BorderLayout());
-        pnlRoot.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        setLayout(new BorderLayout());
+        setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Create top panel with the "Show All Channels" button
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        showAllChannels = new JButton("Show All Channels");
+        topPanel.add(showAllChannels);
+        add(topPanel, BorderLayout.SOUTH);
 
         // Create the list model and populate with user's channels
         listModel = new DefaultListModel<>();
@@ -32,19 +55,15 @@ public class ChannelListView extends JPanel {
             listModel.addElement(channel);
         }
 
-        // Create the JList with custom cell renderer
         channelList = new JList<>(listModel);
         channelList.setCellRenderer(new ChannelListRenderer());
         channelList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        // Add mouse listener for selection and menu
         channelList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int index = channelList.locationToIndex(evt.getPoint());
                 if (index >= 0) {
                     selectedChannel = listModel.getElementAt(index);
-
-                    // Check if right-click or hamburger icon click
                     if (SwingUtilities.isRightMouseButton(evt) ||
                             isHamburgerClick(evt.getPoint(), index)) {
                         showChannelMenu(evt.getX(), evt.getY());
@@ -71,7 +90,6 @@ public class ChannelListView extends JPanel {
     private boolean isHamburgerClick(Point clickPoint, int index) {
         Rectangle cellBounds = channelList.getCellBounds(index, index);
         if (cellBounds != null) {
-            // Hamburger icon would be on the right side of the cell
             int hamburgerX = cellBounds.x + cellBounds.width - 30;
             return clickPoint.x >= hamburgerX && clickPoint.x <= cellBounds.x + cellBounds.width;
         }
@@ -84,7 +102,8 @@ public class ChannelListView extends JPanel {
         JMenuItem favoriteItem = new JMenuItem("Add to Favorites");
         favoriteItem.addActionListener(e -> {
             if (selectedChannel != null) {
-                // Implement favorite logic here
+                selectedChannel.setChannelName(selectedChannel.getChannelName() + "⭐");
+                selectedChannel.setChannelName(selectedChannel.getChannelName() + "⭐");
                 JOptionPane.showMessageDialog(this,
                         "Added " + selectedChannel.getChannelName() + " to favorites");
             }
@@ -97,6 +116,8 @@ public class ChannelListView extends JPanel {
                 String userToInvite = JOptionPane.showInputDialog(this,
                         "Enter username to invite to " + selectedChannel.getChannelName());
                 if (userToInvite != null && !userToInvite.isEmpty()) {
+                    User invitee = findUser(userToInvite);
+                    if (invitee != null){ invitee.subscribeToChannel(selectedChannel);}
                     JOptionPane.showMessageDialog(this,
                             "Invited " + userToInvite + " to " + selectedChannel.getChannelName());
                 }
@@ -121,13 +142,24 @@ public class ChannelListView extends JPanel {
         channelMenu.add(removeItem);
     }
 
+    private User findUser(String username){
+        UserAuthentication authenticationClass = new UserAuthentication();
+        ArrayList<User> usersList = (ArrayList<User>) authenticationClass.getUsers();
+        for (User user : usersList) {
+            if (user.getUsername().toLowerCase().equals(username.toLowerCase())) {
+                System.out.println("Successfully found user");
+                return user;
+            }
+        }
+        return null;
+
+    }
     private void showChannelMenu(int x, int y) {
         if (selectedChannel != null) {
             channelMenu.show(channelList, x, y);
         }
     }
 
-    // Custom cell renderer to show channel name and hamburger icon
     private class ChannelListRenderer extends DefaultListCellRenderer {
         private JPanel panel;
         private JLabel nameLabel;
@@ -183,31 +215,15 @@ public class ChannelListView extends JPanel {
         });
     }
 
-    // Method to get the selected channel (for use by controller)
+    public void addShowAllChannelsListener(ActionListener listener) {
+        showAllChannels.addActionListener(listener);
+    }
+
     public Channel getSelectedChannel() {
         return selectedChannel;
     }
 
-    // Method to add a channel selection listener
     public void addChannelSelectionListener(ListSelectionListener listener) {
         channelList.addListSelectionListener(listener);
-    }
-
-    // For testing
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            // Create test user with some channels
-            User testUser = new User("testUser");
-            testUser.subscribeToChannel(new Channel("Fantasy Book Club"));
-            testUser.subscribeToChannel(new Channel("Sci-Fi Readers"));
-            testUser.subscribeToChannel(new Channel("Mystery Lovers"));
-
-             //ChannelListView listView =  new ChannelListView(testUser);
-            JFrame frame = new JFrame("Channel List");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setContentPane(new ChannelListView(testUser));
-            frame.pack();
-            frame.setVisible(true);
-        });
     }
 }
