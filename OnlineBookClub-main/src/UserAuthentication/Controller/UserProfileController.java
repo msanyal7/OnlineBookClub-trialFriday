@@ -23,7 +23,7 @@ public class UserProfileController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton source = (JButton) e.getSource();
-        if (source.equals(view.getChangeBtn())) {
+        if (source.equals(view.getUpgradeSubscriptionButton())) {
         openChangeSubscriptionWindow();
         }
 //        if(source.equals(view.getChannels())){

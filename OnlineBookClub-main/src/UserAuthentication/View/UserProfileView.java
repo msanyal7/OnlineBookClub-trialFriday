@@ -18,10 +18,10 @@ public class UserProfileView extends JPanel{
     private JPasswordField passwordField1;
     private JTextField textField2;
     private JLabel statusLabel;
-    private JButton changeButton;
+    private JButton upgradeSubscriptionButton;
     private JButton changeToPremiumButton;
     public JButton getChangeBtn(){
-        return this.changeButton;
+        return this.upgradeSubscriptionButton;
     }
 
     private JPanel imgPanel;
@@ -70,8 +70,8 @@ public class UserProfileView extends JPanel{
     }
 
     // You can leave this in case you want to add functionality later
-    public JButton getChangeButton() {
-        return changeButton;
+    public JButton getUpgradeSubscriptionButton() {
+        return upgradeSubscriptionButton;
     }
 
     public String getNewUsername() {
@@ -87,7 +87,7 @@ public class UserProfileView extends JPanel{
     }
 
     public void addChangeButtonListener(ActionListener listener) {
-        changeButton.addActionListener(listener);
+        upgradeSubscriptionButton.addActionListener(listener);
     }
 
     public void addChannelButtonListener(ActionListener listener){
