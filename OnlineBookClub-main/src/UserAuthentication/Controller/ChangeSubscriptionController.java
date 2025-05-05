@@ -3,7 +3,7 @@ package UserAuthentication.Controller;
 import javax.swing.*;
 import java.awt.*;
 
-public class ChangeSubscriptionController {
+public class ChangeSubscriptionController extends JPanel{
     private JPanel mainPanel;
     private JLabel subscriptionLabel;
     private JLabel currentStatusLabel;
