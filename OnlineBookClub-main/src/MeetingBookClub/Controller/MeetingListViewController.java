@@ -28,7 +28,7 @@ public class  MeetingListViewController implements ActionListener {
        this.view=view;
 
       addActionListeners();
-
+      updateListVisual();
         view.getListofMeetings().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 Meeting selected = (Meeting) view.getListofMeetings().getSelectedValue();
