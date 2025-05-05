@@ -41,7 +41,6 @@ public class AuthenticationController {
             if (user != null) {
                 HomepageView homepageView = new HomepageView();
                 Homepage homepageModel = new Homepage();
-                // issue
                 HomepageController homepageController = new HomepageController(homepageModel, homepageView);
                 view.dispose();
                 view.showMessage("Login successful!");

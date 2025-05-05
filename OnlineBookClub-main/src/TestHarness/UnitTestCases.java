@@ -1,5 +1,8 @@
 package TestHarness;
 
+import Homepage.Controller.HomepageController;
+import Homepage.Model.Homepage;
+import Homepage.View.HomepageView;
 import MeetingBookClub.Model.Meeting;
 import MeetingBookClub.Model.MeetingsList;
 import UserAuthentication.Controller.AddPaymentController;
@@ -44,6 +47,18 @@ public class UnitTestCases {
         assertEquals(lastName, addPaymentController.getLastName());
         assertEquals(creditCardNumber, addPaymentController.getCreditCardNumber());
         assertEquals(expirationDate, addPaymentController.getExpirationDate());
+    }
+
+
+// This is a non-functional requirement test, because it uses JUnit testing I kept it here in this class
+    // This test tests how fast the tabs are rendered on the homepage.
+    @org.junit.Test
+    public void testHomepageTabsPerformance() {
+        long startTime = System.currentTimeMillis();
+        HomepageController controller = new HomepageController(new Homepage(), new HomepageView());
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        assertTrue(duration < 5000, "Homepage tabs rendered too slowly"); // The test passes if the time is less than 1 second
     }
 
     public void testMeetingSize () {

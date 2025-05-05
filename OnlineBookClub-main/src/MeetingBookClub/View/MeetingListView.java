@@ -50,9 +50,12 @@ public class MeetingListView extends JPanel{
     }
 
     public void createComponents(){
+        final int FRAME_WIDTH = 400;
+        final int FRAME_HEIGHT = 500;
         MeetingListTitle = new JLabel("Meeting List");
         ListofMeetings = new JList<>(new DefaultListModel<>());
         AddToList = new JButton("Add Meeting");
+
         JPanell = new JPanel();
         JPanell.add(MeetingListTitle);
         JPanell.add(new JScrollPane(ListofMeetings));

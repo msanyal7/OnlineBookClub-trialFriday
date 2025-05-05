@@ -27,6 +27,8 @@ public class Main {
                     // user: user
                     // pass: pass
 
+        /*
+
      UserAuthentication model = new UserAuthentication();
        AuthenticationController controller = new AuthenticationController(model);
 //        Channel channel = new Channel("Polstergeese");
@@ -52,12 +54,13 @@ public class Main {
   //   AddBookForm addBookForm = new AddBookForm();
   //   LibraryController libraryController = new LibraryController(readingProgressModel, libraryView, addBookForm);
 
+         */
+
 
 
 
 
 /*
-
 
        MeetingsList meetingsList = MeetingsList.getInstance();
        MeetingListView meetingListView = new MeetingListView();
@@ -69,6 +72,8 @@ public class Main {
         frame.setVisible(true);
 
  */
+
+
 
     }
 }

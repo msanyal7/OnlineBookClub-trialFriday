@@ -60,7 +60,7 @@ public class HomepageController {
                     break;
             }
         }
-        view.showView(); // Ensure the frame is made visible
+        view.showView();
     }
 
 
