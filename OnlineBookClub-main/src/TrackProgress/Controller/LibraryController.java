@@ -46,6 +46,7 @@ public class LibraryController {
             addFrame = new JFrame("Add a Book");
             addFrame.setContentPane(addBookForm.getPanel());
             addFrame.pack();
+            addFrame.setLocationRelativeTo(null);
         }
 
         addFrame.setVisible(true);
