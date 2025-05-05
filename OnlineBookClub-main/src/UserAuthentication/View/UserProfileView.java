@@ -19,6 +19,7 @@ public class UserProfileView extends JPanel{
     private JTextField textField2;
     private JLabel statusLabel;
     private JButton changeButton;
+    private JButton changeToPremiumButton;
     public JButton getChangeBtn(){
         return this.changeButton;
     }
@@ -33,10 +34,8 @@ public class UserProfileView extends JPanel{
     }
 
 
-    //final int FRAME_WIDTH = 500;
-    //final int FRAME_HEIGHT = 400;
-
     UserProfileController controller;
+    //CONSTRUCTOR
     public UserProfileView() {
         createComponents();
         addChangeButtonListener(controller);

@@ -15,6 +15,8 @@ import TrackProgress.View.AddBookForm;
 //=======
 //>>>>>>> Stashed changes
 import TrackProgress.View.LibraryView;
+import UserAuthentication.Controller.AddPaymentController;
+import UserAuthentication.Controller.ChangeSubscriptionController;
 import UserAuthentication.Controller.UserProfileController;
 import UserAuthentication.Model.User;
 import UserAuthentication.View.UserProfileView;
@@ -45,6 +47,8 @@ public class HomepageController {
                     break;
                 case "Profile":
                     UserProfileView userProfileView = new UserProfileView();
+                    ChangeSubscriptionController changeSubscriptionController = new ChangeSubscriptionController();
+                    AddPaymentController addPaymentController = new AddPaymentController();
                     UserProfileController profileController = new UserProfileController(user, userProfileView);
                     view.addTab(tabTitle, userProfileView);
                     break;
