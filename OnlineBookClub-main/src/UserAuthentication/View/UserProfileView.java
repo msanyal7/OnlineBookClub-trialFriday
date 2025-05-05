@@ -37,6 +37,7 @@ public class UserProfileView extends JPanel{
     //final int FRAME_HEIGHT = 400;
 
     UserProfileController controller;
+    //CONSTRUCTOR
     public UserProfileView() {
         createComponents();
         addChangeButtonListener(controller);

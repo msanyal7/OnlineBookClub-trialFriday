@@ -12,11 +12,13 @@ public class UserProfileController implements ActionListener {
     private User user;
     private UserProfileView view;
 
+
     public UserProfileController(User user, UserProfileView view) {
         this.user = user;
         this.view = view;
         view.displayData(user);
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
