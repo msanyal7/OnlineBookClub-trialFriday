@@ -28,7 +28,6 @@ public class Main {
                     // pass: pass
 
 
-
      UserAuthentication model = new UserAuthentication();
        AuthenticationController controller = new AuthenticationController(model);
 //        Channel channel = new Channel("Polstergeese");
