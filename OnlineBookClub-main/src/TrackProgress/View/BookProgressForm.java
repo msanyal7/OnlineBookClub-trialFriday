@@ -23,7 +23,7 @@ public class BookProgressForm extends JPanel{
     public BookProgressForm(Book book, ReadingProgress readingProgress, LibraryController libraryController) {
         this.currentBook = book;
         this.readingProgress = readingProgress; // NEW: pass model
-        this.libraryController = this.libraryController;
+        this.libraryController = libraryController;
         createUIComponents(); // Initialize all UI components
         setupFrame(); // Setup and display the frame
         setupListeners(); // Setup button actions
@@ -33,7 +33,7 @@ public class BookProgressForm extends JPanel{
     private void createUIComponents() {
         // Initialize components
         bookProgressPanel = new JPanel();
-        bookProgressPanel.setLayout(new GridLayout(6, 1, 10, 10));
+        //bookProgressPanel.setLayout(new GridLayout(6, 1, 10, 10));
 
         bookTitleLabel = new JLabel("Title: " + currentBook.getTitle());
         pagesProgressLabel = new JLabel("Total Pages: " + currentBook.getNumPages());
@@ -55,19 +55,19 @@ public class BookProgressForm extends JPanel{
     private void setupFrame() {
         frame = new JFrame("Update Progress - " + currentBook.getTitle());
         frame.setContentPane(bookProgressPanel);
-        frame.pack();
+        frame.setMinimumSize(new Dimension(700,500));
+        // frame.pack();
         frame.setLocationRelativeTo(null); // Center the frame
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    // Define actions for buttons
+
     private void setupListeners() {
         submitButton.addActionListener(e -> updatePages());
         backButton.addActionListener(e -> frame.dispose());
     }
 
-    // Handle the page update logic
     private void updatePages() {
         try {
             int pagesRead = Integer.parseInt(updatePagesTextField.getText());
@@ -80,6 +80,7 @@ public class BookProgressForm extends JPanel{
                 currentBook.setBookProgress(progressPercentage);
 
                 JOptionPane.showMessageDialog(frame, "Progress Updated Successfully!\nYou are " + String.format("%.2f", progressPercentage) + "% through this book.");
+                libraryController.refreshBookProgressLabel();
                 libraryController.refreshLibraryView();
                 frame.dispose();
             } else {
