@@ -1,6 +1,7 @@
 package MeetingBookClub.View;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MeetingListView extends JPanel{
 
@@ -54,6 +55,8 @@ public class MeetingListView extends JPanel{
 
     private JButton delete_meeting_button;
 
+
+
     public MeetingListView(){
         createComponents();
     }
@@ -63,10 +66,22 @@ public class MeetingListView extends JPanel{
         ListofMeetings = new JList<>(new DefaultListModel<>());
         AddToList = new JButton("Add Meeting");
         delete_meeting_button = new JButton("Delete Meeting");
+
         JPanell = new JPanel();
+        JPanell.setLayout(new BorderLayout());
+        // buttons now with better format
+        JPanell.add(MeetingListTitle,BorderLayout.PAGE_START);
+        JPanell.add(new JScrollPane(ListofMeetings),BorderLayout.CENTER);
+        //buttons buttons
+        JPanell.add(AddToList,BorderLayout.AFTER_LINE_ENDS);
+        JPanell.add(delete_meeting_button,BorderLayout.AFTER_LAST_LINE);
+        /*
         JPanell.add(MeetingListTitle);
         JPanell.add(new JScrollPane(ListofMeetings));
         JPanell.add(AddToList);
         JPanell.add(delete_meeting_button);
+
+         */
+
     }
 }

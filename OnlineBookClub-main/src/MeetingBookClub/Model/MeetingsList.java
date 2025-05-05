@@ -23,20 +23,23 @@ public class MeetingsList  {
     public MeetingsList() {
         this.meetingList = new ArrayList<>();
 
-        Calendar calendar = Calendar.getInstance();
 
+        // calendar for data
+        Calendar calendar = Calendar.getInstance();
+        // setting date
         calendar.set(2025, Calendar.MAY,2);
         Date date = calendar.getTime();
-
-        calendar.set(Calendar.HOUR,12);
+        //setting time
+        calendar.set(Calendar.HOUR_OF_DAY,12);
         calendar.set(Calendar.MINUTE,30);
-        calendar.set(Calendar.SATURDAY,00);
-
+        calendar.set(Calendar.SECOND,00);
+        // data for list default
         Time time = new Time(calendar.getTimeInMillis());
         meetingList.add(new Meeting(date, time,"Hunger Games","www.zoom.com"));
         meetingList.add(new Meeting(date, time,"Catcher in the Rye","www.zoom.com"));
     }
 
+    // making sure it gets the same one list
     public static MeetingsList getInstance(){
         if (same==null){
             same = new MeetingsList();
@@ -44,7 +47,7 @@ public class MeetingsList  {
         return same;
     }
 
-
+    // calling through interface to add
     public void addMeetingtoList (MeetingInterface meeting){
         meetingList.add(meeting);
     }
@@ -54,6 +57,7 @@ public class MeetingsList  {
     /**
      * deleting
      */
+
 
    public void deleteMeetingFromList(MeetingInterface meeting){
      meetingList.remove(meeting);

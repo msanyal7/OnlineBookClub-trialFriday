@@ -61,9 +61,14 @@ public class UnitTestCases {
         assertTrue(duration < 5000, "Homepage tabs rendered too slowly"); // The test passes if the time is less than 1 second
     }
 
+    // testing to see if meeting increments - Manali
+
     public void testMeetingSize () {
         MeetingsList meetingsList = new MeetingsList();
 
+
+        // DUMMY DATA - not accurate - only for testigng
+        // getting current size
         int size = meetingsList.getMeetingList().size();
 
         Date date = new Date(2025,3,25);
@@ -72,8 +77,10 @@ public class UnitTestCases {
 
         meetingsList.addMeetingtoList(meeting);
 
+        // fsize after adding
         int sizeCheck = meetingsList.getMeetingList().size();
 
+        // one meeting at a time
         if (sizeCheck==size+1){
             System.out.println("Meeting Incremented ");
         }
