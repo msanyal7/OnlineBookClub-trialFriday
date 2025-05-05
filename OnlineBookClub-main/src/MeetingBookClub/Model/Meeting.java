@@ -81,7 +81,7 @@ public class Meeting implements MeetingInterface {
     }
 
     public String toString() {
-        return "MEETING: "+ meetingName + "at" + meetingTime + "on" + meetingDate + "link: " + meetingLink;
+        return "MEETING: "+ meetingName;
     }
 
 }

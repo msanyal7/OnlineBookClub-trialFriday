@@ -27,7 +27,7 @@ public class Main {
                     // user: user
                     // pass: pass
 
-        /*
+
 
      UserAuthentication model = new UserAuthentication();
        AuthenticationController controller = new AuthenticationController(model);
@@ -54,7 +54,7 @@ public class Main {
   //   AddBookForm addBookForm = new AddBookForm();
   //   LibraryController libraryController = new LibraryController(readingProgressModel, libraryView, addBookForm);
 
-         */
+
 
 
 

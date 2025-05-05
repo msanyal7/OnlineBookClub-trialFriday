@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class  MeetingListViewController implements ActionListener {
@@ -29,9 +31,13 @@ public class  MeetingListViewController implements ActionListener {
 
       addActionListeners();
       updateListVisual();
+      // selects each element of list to display more information
+        // listen selection listener instead of action listener  for delay for pp up
         view.getListofMeetings().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
+                //getting vlaue of meeting
                 Meeting selected = (Meeting) view.getListofMeetings().getSelectedValue();
+                //checking to see if f=value is there or not
                 if (selected != null) {
                     JOptionPane.showMessageDialog(view.getJPanell(),
                             "Meeting Name: " + selected.getMeetingName() +
@@ -51,7 +57,7 @@ public class  MeetingListViewController implements ActionListener {
 
     private void addActionListeners(){
         view.getAddToList().addActionListener(this);
-
+        view.getDelete_meeting_button().addActionListener(this);
     }
 
     @Override
@@ -59,6 +65,9 @@ public class  MeetingListViewController implements ActionListener {
         Object source = e.getSource();
         if (source == view.getAddToList()){
             addNewMeeting();
+        }
+        if (source == view.getDelete_meeting_button()){
+            deleteMeeting();
         }
         updateListVisual();
     }
@@ -74,6 +83,14 @@ public class  MeetingListViewController implements ActionListener {
         String link = JOptionPane.showInputDialog(view.getJPanell(), "Enter Meeting Link:");
         if (link == null || link.isEmpty()) {
             return;
+        }
+
+       String dateStringInput = JOptionPane.showInputDialog(view.getJPanell(), "Enter Meeting Date:");
+        try {
+            SimpleDateFormat parser = new SimpleDateFormat("MM/dd/yyyy");
+            String meetingDate = String.valueOf(parser.parse(dateStringInput));
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(view.getJPanell(), "Invalid date format. Please enter as MM/dd/yyyy");
         }
 
 
@@ -100,7 +117,18 @@ public class  MeetingListViewController implements ActionListener {
 
 
     private void deleteMeeting(){
+        //get click val
+        Meeting meetingtoDelete = (Meeting) view.getListofMeetings().getSelectedValue();
 
+        if (meetingtoDelete != null){
+            int t = JOptionPane.showConfirmDialog(view.getJPanell(),"Delete?"+ JOptionPane.YES_NO_OPTION);
+            if(t == JOptionPane.YES_OPTION){
+                model.deleteMeetingFromList(meetingtoDelete);
+                updateListVisual();
+                JOptionPane.showMessageDialog(view.getJPanell(),"Deleted");
+            }
+
+        }
     }
 
     private void updateListVisual(){

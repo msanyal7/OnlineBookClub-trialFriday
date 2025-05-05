@@ -43,6 +43,15 @@ public class MeetingListView extends JPanel{
     }
 
     private JPanel JPanell;
+
+    public JButton getDelete_meeting_button() {
+        return delete_meeting_button;
+    }
+
+    public void setDelete_meeting_button(JButton delete_meeting_button) {
+        this.delete_meeting_button = delete_meeting_button;
+    }
+
     private JButton delete_meeting_button;
 
     public MeetingListView(){
@@ -50,16 +59,15 @@ public class MeetingListView extends JPanel{
     }
 
     public void createComponents(){
-        final int FRAME_WIDTH = 400;
-        final int FRAME_HEIGHT = 500;
         MeetingListTitle = new JLabel("Meeting List");
         ListofMeetings = new JList<>(new DefaultListModel<>());
         AddToList = new JButton("Add Meeting");
-
+        delete_meeting_button = new JButton("Delete Meeting");
         JPanell = new JPanel();
         JPanell.add(MeetingListTitle);
         JPanell.add(new JScrollPane(ListofMeetings));
         JPanell.add(AddToList);
+        JPanell.add(delete_meeting_button);
         this.JPanell.setSize(100,200);
     }
 }
