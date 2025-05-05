@@ -40,7 +40,7 @@ public class HomepageController {
                     LibraryView libraryView = new LibraryView();
                     AddBookForm addBookFormView = null;
                     LibraryController libraryController = new LibraryController(readingProgress, libraryView, addBookFormView);
-                    view.addTab(tabTitle, libraryView);
+                    view.addTab(tabTitle, libraryView.getPanel());
                     break;
                 case "Profile":
                     UserProfileView userProfileView = new UserProfileView();
@@ -51,7 +51,7 @@ public class HomepageController {
                     MeetingsList meetingsList = new MeetingsList();
                     MeetingListView meetingListView = new MeetingListView();
                     MeetingListViewController meetingListViewController = new MeetingListViewController(meetingsList, meetingListView);
-                    view.addTab(tabTitle, meetingListView);
+                    view.addTab(tabTitle, meetingListView.getJPanell());
                     break;
                 case "Channels":
                     ChannelListView channelListView = new ChannelListView(user);
