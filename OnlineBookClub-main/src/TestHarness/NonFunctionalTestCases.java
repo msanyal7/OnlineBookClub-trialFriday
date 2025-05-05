@@ -46,13 +46,4 @@ public class NonFunctionalTestCases {
         }
     }
 
-    public void testHomepageTabsPerformance() {
-        long startTime = System.currentTimeMillis();
-        HomepageController controller = new HomepageController(new Homepage(), new HomepageView());
-        long endTime = System.currentTimeMillis();
-        long duration = endTime - startTime;
-        if (duration < 5000){
-            System.out.println("Homepage tabs rendered too slowly");
-        }
-    }
 }

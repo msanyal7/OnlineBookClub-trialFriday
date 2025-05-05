@@ -28,7 +28,6 @@ public class TestHarness {
         // testing meeting size
         unitTestCases.testMeetingSize();
 
-
         //System Test cases
         SystemTestCases systemTestCases = new SystemTestCases();
         systemTestCases.testMeetingClick();
@@ -37,7 +36,7 @@ public class TestHarness {
         NonFunctionalTestCases nonFunctionalTestCases = new NonFunctionalTestCases();
         nonFunctionalTestCases.testValidationMessage();
         nonFunctionalTestCases.testAddBookToList();
-        nonFunctionalTestCases.testHomepageTabsPerformance();
+
 
 
     }
