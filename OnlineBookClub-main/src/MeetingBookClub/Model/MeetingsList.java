@@ -1,6 +1,8 @@
 package MeetingBookClub.Model;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MeetingsList  {
@@ -17,7 +19,8 @@ public class MeetingsList  {
      */
 
     public MeetingsList() {
-        meetingList = new ArrayList<>();
+        this.meetingList = new ArrayList<>();
+        meetingList.add(new Meeting(new Date(12/4/2003), new Time(12),"Hunger Games","www.zoom.com"));
     }
 
     public static MeetingsList getInstance(){
