@@ -42,6 +42,7 @@ public class  MeetingListViewController implements ActionListener {
                     JOptionPane.showMessageDialog(view.getJPanell(),
                             "Meeting Name: " + selected.getMeetingName() +
                                     "\nTime: " + selected.getMeetingTime() +
+                                    "\nDate: " + selected.getMeetingDate()+
                                     "\nLink: " + selected.getMeetingLink(),
                             "Meeting Info",
                             JOptionPane.INFORMATION_MESSAGE);
@@ -74,7 +75,6 @@ public class  MeetingListViewController implements ActionListener {
 
     private void addNewMeeting() {
         Date today = new Date();
-        Time now = new Time(System.currentTimeMillis());
         String name = JOptionPane.showInputDialog(view.getJPanell(), "Enter Meeting Name:");
         if (name == null || name.isEmpty()) {
             return;
@@ -85,16 +85,30 @@ public class  MeetingListViewController implements ActionListener {
             return;
         }
 
+        // getting date
        String dateStringInput = JOptionPane.showInputDialog(view.getJPanell(), "Enter Meeting Date:");
+        // date try catchh
         try {
             SimpleDateFormat parser = new SimpleDateFormat("MM/dd/yyyy");
             String meetingDate = String.valueOf(parser.parse(dateStringInput));
         } catch (ParseException e) {
-            JOptionPane.showMessageDialog(view.getJPanell(), "Invalid date format. Please enter as MM/dd/yyyy");
+            JOptionPane.showMessageDialog(view.getJPanell(), "Invalid date format. Please enter date again");
+        }
+        // time try catch
+        Date datetime = null;
+      String timeInput = JOptionPane.showInputDialog(view.getJPanell(), "Enter Meeting Time:");
+        try {
+            SimpleDateFormat timeParser = new SimpleDateFormat("hh:mm a");
+             datetime = timeParser.parse(timeInput);
+
+        }
+        catch (ParseException e){
+            JOptionPane.showMessageDialog(view.getJPanell(),"Try again");
         }
 
+        Time time = new Time(datetime.getTime());
 
-        Meeting newMeeting = new Meeting(today, now, name, link);
+        Meeting newMeeting = new Meeting(today, time, name, link);
         model.addMeetingtoList(newMeeting);
         DefaultListModel<Meeting> listModel = (DefaultListModel<Meeting>) view.getListofMeetings().getModel();
         listModel.addElement(newMeeting);

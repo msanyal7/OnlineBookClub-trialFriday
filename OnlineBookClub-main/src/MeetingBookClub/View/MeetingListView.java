@@ -68,6 +68,5 @@ public class MeetingListView extends JPanel{
         JPanell.add(new JScrollPane(ListofMeetings));
         JPanell.add(AddToList);
         JPanell.add(delete_meeting_button);
-        this.JPanell.setSize(100,200);
     }
 }
