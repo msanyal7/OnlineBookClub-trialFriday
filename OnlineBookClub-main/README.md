@@ -16,13 +16,13 @@ Use Cases
 12. Users can view profile information.
 
 
-| Team-Member ID | Team-Member Name     | Efforts in Particular Assignment | Classes / Interfaces implementing the Design Pattern             |
-|----------------|----------------------|----------------------------------|------------------------------------------------------------------|
-| azs7311        | Ashley Santana       | 100%                             |                                                                  |
-| scg5384        | Stephanie Goodie Obi | 100%                             |                                                                  |
-| mjs8580        | Manali Sanyal        | 100%                             | Meeting MVC and System test case and unit test case              |
-| snw5334        | Sereina Williams     | 100%                             |                                                                  |   
-| bqw5394        | Britney Wang         | 100%                             | Worked on testStorePaymentInformation and UserProfile Controller |   
+| Team-Member ID | Team-Member Name     | Efforts in Particular Assignment | Classes / Interfaces implementing the Design Pattern                                                  |
+|----------------|----------------------|----------------------------------|-------------------------------------------------------------------------------------------------------|
+| azs7311        | Ashley Santana       | 100%                             |                                                                                                       |
+| scg5384        | Stephanie Goodie Obi | 100%                             |                                                                                                       |
+| mjs8580        | Manali Sanyal        | 100%                             | Meeting MVC and System test case and unit test case                                                   |
+| snw5334        | Sereina Williams     | 100%                             | Worked on and finished the Readng Progress & Library MVC. Also completed the Nonfunctional Test Cases |   
+| bqw5394        | Britney Wang         | 100%                             | Worked on testStorePaymentInformation and UserProfile Controller                                      |   
 
 
 Refactoring Implementations
