@@ -16,7 +16,7 @@ Use Cases
 
 | Team-Member ID | Team-Member Name     | Efforts in Particular Assignment | Classes / Interfaces implementing the Design Pattern                                                  |
 |----------------|----------------------|----------------------------------|-------------------------------------------------------------------------------------------------------|
-| azs7311        | Ashley Santana       | 100%                             |                                                                                                       |
+| azs7311        | Ashley Santana       | 100%                             | Hompepage Controller and View.                                                                                             |
 | scg5384        | Stephanie Goodie Obi | 100%                             | Channel Interface and its View Controllers. And integration testcases in the test harness file.                                                                                               |
 | mjs8580        | Manali Sanyal        | 100%                             | Meeting MVC and System test case and unit test case                                                   |
 | snw5334        | Sereina Williams     | 100%                             | Worked on and finished the Readng Progress & Library MVC. Also completed the Nonfunctional Test Cases |   
